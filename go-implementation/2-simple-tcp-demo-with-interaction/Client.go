@@ -15,12 +15,14 @@ func main() {
 		n    int
 	)
 
-	conn, err = net.Dial("tcp", "127.0.0.1:8090")
+	conn, err = net.DialTimeout("tcp", "127.0.0.1:8090", time.Duration(3000*time.Millisecond))
 	if err != nil {
 		fmt.Println("dial错误", err)
 		return
 	}
 	defer conn.Close()
+
+	fmt.Println(conn.RemoteAddr())
 
 	//go func(conn net.Conn) {
 	_, err = conn.Write([]byte("hello,i am client"))
