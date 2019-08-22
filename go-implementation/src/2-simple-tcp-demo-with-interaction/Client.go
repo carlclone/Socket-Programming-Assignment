@@ -7,6 +7,7 @@ import (
 	"time"
 )
 
+//TODO; defer 崩溃了 或强制关闭了 , 会如何
 func main() {
 	var (
 		err  error
